@@ -14,6 +14,7 @@
             {
                 var nric = $('#text').val();
 				var size = $('#qr_size').val();
+		                                                          // will add size adjustment
                 var url = 'https://api.qrserver.com/v1/create-qr-code/?size=' + size + '&data=' + nric;
                 $('#barcode').attr('src', url);
             }
