@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	    <meta charset="UTF-8">
+        <title>QR Code Generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            function generateBarCode()
+            {
+                var nric = $('#text').val();
+				var size = $('#qr_size').val();
+                var url = 'https://api.qrserver.com/v1/create-qr-code/?size=' + size + '&data=' + nric;
+                $('#barcode').attr('src', url);
+            }
+        </script>
+		<style>
+		#div{
+		text-align: center;
+		}
+		</style>
+    </head>
+	
+    <body>
+	<div id="div">
+	<h1>QR Code Generator</h1>	
+	</div>
+    <div id="div" class="alert alert-warning">
+      <strong>Info!</strong> QR Codes are not stored.</a>
+    </div>
+	<div id="div">
+        <input id="text" type="text" placeholder="QR Data"/>
+		<select>
+          <option id="qr_size" value="512x512">512px</option>
+        </select>
+        <button onclick="generateBarCode()">Submit</button>
+	</div>
+
+	<div id="div" style="text-align: center;"><img id='barcode'/></div>
+    </body>
+</html>
